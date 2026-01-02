@@ -148,26 +148,3 @@ Arpit Bhojani - Python Developer
 📱 Phone: +91 7383181094
 
 <div align="center"> <sub>Built with ❤️ and Django.</sub> </div>
-
-## 📂 Project Structure
-
-<details>
-<summary>Click to expand file tree</summary>
-
-```text
-careerhub/
-├── accounts/            # User Authentication & Role Management
-│   ├── models.py        # Custom User Model (AbstractUser)
-│   ├── views.py         # Login/Signup Logic
-│   └── templates/       # Auth Forms
-├── jobs/                # Job Posting & Application Logic
-│   ├── models.py        # Job, Application, Category Models
-│   ├── views.py         # CRUD operations for Jobs
-│   └── templates/       # Job Lists & Details
-├── careerhub/           # Project Settings
-│   ├── settings.py
-│   └── urls.py
-├── static/              # CSS, JS, Images
-├── media/               # User Resumes & Profile Pics
-├── manage.py
-└── requirements.txt
