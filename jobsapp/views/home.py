@@ -30,8 +30,8 @@ class SearchView(ListView):
     context_object_name = 'jobs'
 
     def get_queryset(self):
-        return self.model.objects.filter(location__contains=self.request.GET['location'],
-                                         title__contains=self.request.GET['position'])
+        return self.model.objects.filter(location__contains=self.request.GET.get('location', ''),
+                                         title__contains=self.request.GET.get('position', ''))
 
 
 class JobListView(ListView):
@@ -98,5 +98,4 @@ class ApplyJobView(CreateView):
             return HttpResponseRedirect(self.get_success_url())
         # save applicant
         form.instance.user = self.request.user
-        form.save()
         return super().form_valid(form)

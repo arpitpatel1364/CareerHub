@@ -72,7 +72,7 @@ class EmployeeRegistrationForm(UserCreationForm):
         return gender
 
     def save(self, commit=True):
-        user = super(UserCreationForm, self).save(commit=False)
+        user = super().save(commit=False)
         user.role = "employee"
         if commit:
             user.save()
@@ -129,7 +129,7 @@ class EmployerRegistrationForm(UserCreationForm):
         }
 
     def save(self, commit=True):
-        user = super(UserCreationForm, self).save(commit=False)
+        user = super().save(commit=False)
         user.role = "employer"
         if commit:
             user.save()
@@ -158,9 +158,7 @@ class UserLoginForm(forms.Form):
             self.user = authenticate(email=email, password=password)
 
             if self.user is None:
-                raise forms.ValidationError("User Does Not Exist.")
-            if not self.user.check_password(password):
-                raise forms.ValidationError("Password Does not Match.")
+                raise forms.ValidationError("Invalid email or password.")
             if not self.user.is_active:
                 raise forms.ValidationError("User is not Active.")
 

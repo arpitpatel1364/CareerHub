@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{% block title %} {% endblock %} Job Portal </title>
+    <title>{% block title %} {% endblock %} CareerHub </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -104,7 +104,7 @@
                                 {% endif %}
                             </a>
                             <div aria-labelledby="clientZone" class="dropdown-menu">
-                                <a href="{% url 'accounts:employer-profile-update' %}" class="dropdown-item">Edit Profile</a>
+                                <a href="{% url 'accounts:employee-profile-update' %}" class="dropdown-item">Edit Profile</a>
                                 <a href="{% url 'accounts:logout' %}" class="dropdown-item">Logout</a>
                             </div>
                         </li>
@@ -150,9 +150,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-12 mb-5">
-                    <h4 class="h5">About Jobs</h4>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis
-                        aliquet congue. </p>
+                    <h4 class="h5">About CareerHub</h4>
+                    <p> Connecting talent with opportunity through intelligent hiring solutions</p>
                 </div>
             </div>
         </div>
@@ -161,7 +160,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-md-left text-center">
-                    <p>&copy;2019 Jobs</p>
+                    <p>&copy;2024 CareerHub</p>
                 </div>
             </div>
         </div>

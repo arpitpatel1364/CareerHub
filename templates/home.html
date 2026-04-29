@@ -3,6 +3,13 @@
 {% block title %}
     Home
 {% endblock %}
+{% block styles %}
+    <style>
+        .section-divider {
+            background-image: url("{% static 'img/startup.jpg' %}");
+        }
+    </style>
+{% endblock %}
 
 {% block content %}
 
@@ -46,7 +53,7 @@
                         <h2 class="heading">Find a <span class="accent">job</span> you will
                             <span class="accent">love</span>.
                         </h2>
-                        <form id="job-main-form" method="get" action="{% url 'jobs:searh' %}" class="job-main-form">
+                        <form id="job-main-form" method="get" action="{% url 'jobs:search' %}" class="job-main-form">
                             <div class="controls">
                                 <div class="row align-items-center">
                                     <div class="col-md-5">
@@ -156,7 +163,7 @@
             {% endfor %}
         </div>
     </section>
-    <section style="background-image: url({% static 'img/startup.jpg' %}); " class="section-divider">
+    <section class="section-divider">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">

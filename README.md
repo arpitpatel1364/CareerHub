@@ -1,150 +1,146 @@
-# 🚀 CareerHub - Advanced Job Portal System
+# CareerHub - Advanced Job Portal System
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python)
 ![Django](https://img.shields.io/badge/Django-4.2%2B-092E20?style=for-the-badge&logo=django)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Ready_to_Commit-success?style=for-the-badge)
 
 > **A comprehensive recruitment platform bridging the gap between talent and opportunity through secure, role-based interaction.**
 
+---
 
+## Project Architecture
 
-## 📋 Overview
-
-**CareerHub** is a full-stack Django application designed to streamline the recruitment process. It features a robust **Role-Based Access Control (RBAC)** system that creates distinct, secure environments for Administrators, Job Providers (Recruiters), and Job Seekers (Candidates). 
-
-This project demonstrates advanced database modeling, secure authentication, and complex workflow management using Python and Django.
+```text
+                                +-------------------+
+                                |   Web Browser     |
+                                | (Bootstrap/JS)    |
+                                +---------+---------+
+                                          | (HTTPS)
+                                          v
+                                +---------+---------+
+                                |  Django Framework |
+                                | (Logic & Routing) |
+                                +----+----+----+----+
+                                     |    |    |
+              +----------------------+    |    +----------------------+
+              |                           |                           |
+    +---------v---------+       +---------v---------+       +---------v---------+
+    |   Accounts App    |       |    JobsApp        |       |   Admin Dashboard |
+    | (Auth & Profiles) |       | (Postings/Apps)   |       | (Management)      |
+    +---------+---------+       +---------+---------+       +---------+---------+
+              |                           |                           |
+              +-------------+-------------+-------------+-------------+
+                            |
+                            v
+                  +---------+---------+
+                  |    Database       |
+                  | (SQLite/Postgres) |
+                  +-------------------+
+```
 
 ---
 
-## 👥 Architecture: Role-Based Access Control
+## Overview
 
-The system separates functionality into three distinct tiers to ensure data security and workflow efficiency.
+**CareerHub** is a high-performance Django application designed to streamline the recruitment lifecycle. It utilizes a **Role-Based Access Control (RBAC)** system to provide specialized interfaces for Administrators, Recruiters (Job Providers), and Candidates (Job Seekers).
 
-| Role | Access Level | Primary Responsibilities |
+### User Roles
+| Role | Access Level | Responsibilities |
 | :--- | :--- | :--- |
-| **👑 Admin** | **Superuser** | System monitoring, user management, content moderation, analytics. |
-| **💼 Job Provider** | **Recruiter** | Post vacancies, screen applications, download resumes, schedule interviews. |
-| **👨‍💻 Job Seeker** | **Candidate** | Build profile, search jobs, apply with one click, track application status. |
+| **Admin** | Superuser | Full system control, user moderation, and analytics. |
+| **Provider**| Recruiter | Post vacancies, review applications, and manage hiring status. |
+| **Seeker**  | Candidate | Build profile, upload resume, search and apply for jobs. |
 
 ---
 
-## ✨ Key Features
+## Screenshots
 
-### 🏢 For Job Providers (Recruiters)
-* **Vacancy Management:** Create, edit, and close job listings with rich text descriptions.
-* **Application Tracking:** View list of applicants for specific posts.
-* **Resume Screening:** Direct access to candidate resumes and profiles.
-* **Company Profile:** Manage company branding and details.
-
-### 👨‍🎓 For Job Seekers (Candidates)
-* **Advanced Search:** Filter jobs by category, location, and salary.
-* **Smart Profile:** Upload resume/CV, add skills, and work experience.
-* **Application History:** Track the status of applied jobs (Pending, Accepted, Rejected).
-* **Alerts:** (Optional) Notifications for relevant job openings.
-
-### ⚙️ Core System Features
-* **Secure Authentication:** Login/Signup with Django Auth.
-* **Responsive Design:** optimized for mobile and desktop viewing.
-* **Dynamic Filtering:** Real-time job search capabilities.
+<div align="center">
+  <img src="screenshots/one.png" width="80%" alt="Homepage Overview">
+  <p><i>Home Page with Advanced Search</i></p>
+  <br>
+  <img src="screenshots/two.png" width="80%" alt="Dashboard">
+  <p><i>Role-Based Dashboard for Recruiters</i></p>
+  <br>
+  <img src="screenshots/three.png" width="80%" alt="Job Listings">
+  <p><i>Detailed Job Listings & Application View</i></p>
+</div>
 
 ---
 
-## 🛠️ Tech Stack
+## Key Features
 
-| Domain | Technologies Used |
-| :--- | :--- |
-| **Backend** | Python 3.8+, Django 4.2+ |
-| **Frontend** | HTML5, CSS3 (Bootstrap/Tailwind), JavaScript |
-| **Database** | SQLite (Dev) / PostgreSQL (Production) |
-| **Security** | Django Role-Based Access, CSRF Protection |
+### For Job Providers
+*   **Vacancy Management:** Create, update, and close job postings.
+*   **Applicant Tracking:** View and filter candidates who applied for specific roles.
+*   **Company Branding:** Manage company profile and details.
+
+### For Job Seekers
+*   **Smart Search:** Filter by position, location, and job type.
+*   **One-Click Apply:** Seamless application process.
+*   **Application History:** Track status (Pending/Accepted/Rejected) in real-time.
 
 ---
 
-## 🚀 Quick Start Guide
+## Test Cases & Validation
+
+| Module | Test Case | Expected Result |
+| :--- | :--- | :--- |
+| **Auth** | Register with existing email | System returns "Email already exists" error. |
+| **Jobs** | Post job without salary | Form fails validation (Salary is required). |
+| **Search** | Search for "Python" in "New York" | Returns only relevant job listings. |
+| **Access** | Seeker tries to access Admin panel | Redirects to login with Permission Denied. |
+| **Apply** | Apply twice for same job | Error message: "You already applied for this job." |
+
+---
+
+## Installation & Setup
 
 ### Prerequisites
-* Python 3.8+
-* pip
+*   Python 3.8+
+*   pip (Python Package Manager)
 
-### Installation
-
-1.  **Clone the repository**
+### Quick Start
+1.  **Clone & Enter**
     ```bash
-    git clone [https://github.com/your-username/careerhub.git](https://github.com/your-username/careerhub.git)
-    cd careerhub
+    git clone https://github.com/your-username/CareerHub.git
+    cd CareerHub
     ```
-
-2.  **Set up Virtual Environment**
+2.  **Environment & Dependencies**
     ```bash
-    # Windows
-    python -m venv venv
-    venv\Scripts\activate
-    
-    # macOS/Linux
     python3 -m venv venv
     source venv/bin/activate
-    ```
-
-3.  **Install Dependencies**
-    ```bash
     pip install -r requirements.txt
     ```
-
-4.  **Run Migrations**
+3.  **Database Setup**
     ```bash
     python manage.py makemigrations
     python manage.py migrate
     ```
-
-5.  **Create Admin User**
+4.  **Launch**
     ```bash
     python manage.py createsuperuser
-    ```
-
-6.  **Run Server**
-    ```bash
     python manage.py runserver
     ```
-    Visit `http://localhost:8000`
 
 ---
 
+## Project Structure
+```text
+CareerHub/
+├── accounts/          # User authentication & Profile management
+├── jobs/              # Core project settings
+├── jobsapp/           # Job listings, search, & applications
+├── screenshots/       # Documentation assets
+├── static/            # CSS, JS, and Images
+├── templates/         # HTML structure
+└── manage.py          # Django entry point
+```
 
-🎮 Usage Guide
-1. Setting up the Master Admin
-Log in via /admin.
+---
 
-Verify new company registrations.
-
-Manage job categories (e.g., "IT", "Marketing", "Finance").
-
-2. Posting a Job (Provider)
-Register as a "Recruiter".
-
-Navigate to Dashboard > Post New Job.
-
-Fill in details (Title, Salary, Description) and Publish.
-
-3. Applying for a Job (Seeker)
-Register as a "Job Seeker".
-
-Complete your profile (Upload Resume).
-
-Browse the Home Page and click "Apply Now" on any listing.
-
-🛡️ Security & Best Practices
-Password Hashing: Uses Django’s PBKDF2 password hasher.
-
-Permissions: Decorators like @login_required and custom @recruiter_required ensure strict access control.
-
-Data Protection: CSRF tokens on all forms to prevent cross-site attacks.
-
-📞 Contact & Author
-Arpit Bhojani - Python Developer
-
-📧 Email: bhojaniarpit1432@gmail.com
-
-📱 Phone: +91 7383181094
-
-<div align="center"> <sub>Built with ❤️ and Django.</sub> </div>
+<div align="center">
+  <sub>Built with Python and Django</sub><br>
+  <sub>CareerHub - Bridging Talent and Opportunity</sub>
+</div>

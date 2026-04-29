@@ -53,10 +53,8 @@ class JobCreateView(CreateView):
 
     @method_decorator(login_required(login_url=reverse_lazy('accounts:login')))
     def dispatch(self, request, *args, **kwargs):
-        if not self.request.user.is_authenticated:
-            return reverse_lazy('accounts:login')
         if self.request.user.is_authenticated and self.request.user.role != 'employer':
-            return reverse_lazy('accounts:login')
+            return HttpResponseRedirect(reverse_lazy('accounts:login'))
         return super().dispatch(self.request, *args, **kwargs)
 
     def form_valid(self, form):
